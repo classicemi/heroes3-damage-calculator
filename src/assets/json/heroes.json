@@ -1,751 +1,751 @@
 [
   {
     "id": 1,
-    "name": ["Оррин", "Orrin"],
+    "name": ["Оррин", "Orrin", "欧灵"],
     "specialtySkill": "archery"
   },
   {
     "id": 2,
-    "name": ["Валеска", "Valeska"],
+    "name": ["Валеска", "Valeska", "威尔斯凯"],
     "specialtyUnit": [ 2, 3 ]
   },
   {
     "id": 3,
-    "name": ["Эдрик", "Edric"],
+    "name": ["Эдрик", "Edric", "艾得力克"],
     "specialtyUnit": [ 4, 5 ]
   },
   {
     "id": 4,
-    "name": ["Сильвия", "Sylvia"]
+    "name": ["Сильвия", "Sylvia", "斯尔维亚"]
   },
   {
     "id": 5,
-    "name": ["Лорд Хаарт", "Lord Haart"]
+    "name": ["Лорд Хаарт", "Lord Haart", "罗德-哈特"]
   },
   {
     "id": 6,
-    "name": ["Сорша", "Sorsha"],
+    "name": ["Сорша", "Sorsha", "索萨"],
     "specialtyUnit": [ 6, 7 ]
   },
   {
     "id": 7,
-    "name": ["Кристиан", "Christian"],
+    "name": ["Кристиан", "Christian", "克里斯丁"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 8,
-    "name": ["Турис", "Tyris"],
+    "name": ["Турис", "Tyris", "塔里斯"],
     "specialtyUnit": [ 10, 11 ]
   },
   {
     "id": 9,
-    "name": ["Рион", "Rion"]
+    "name": ["Рион", "Rion", "瑞恩"]
   },
   {
     "id": 10,
-    "name": ["Адель", "Adela"],
+    "name": ["Адель", "Adela", "阿德拉"],
     "specialtySpell": "bless"
   },
   {
     "id": 11,
-    "name": ["Катберт", "Cuthbert"],
+    "name": ["Катберт", "Cuthbert", "库斯伯特"],
     "specialtySpell": "weakness"
   },
   {
     "id": 12,
-    "name": ["Аделаида", "Adelaide"],
+    "name": ["Аделаида", "Adelaide", "艾德里得"],
     "specialtySpell": "frost ring"
   },
   {
     "id": 13,
-    "name": ["Инхам", "Ingham"],
+    "name": ["Инхам", "Ingham", "因海姆"],
     "specialtyUnit": [ 8, 9 ]
   },
   {
     "id": 14,
-    "name": ["Саня", "Sanya"]
+    "name": ["Саня", "Sanya", "塞亚"]
   },
   {
     "id": 15,
-    "name": ["Лоинс", "Loynis"],
+    "name": ["Лоинс", "Loynis", "罗尼斯"],
     "specialtySpell": "prayer"
   },
   {
     "id": 16,
-    "name": ["Каитлин", "Caitlin"]
+    "name": ["Каитлин", "Caitlin", "凯特琳"]
   },
   {
     "id": 17,
-    "name": ["Мефала", "Mephala"],
+    "name": ["Мефала", "Mephala", "孟斐拉"],
     "specialtySkill": "armorer"
   },
   {
     "id": 18,
-    "name": ["Уфретин", "Ufretin"],
+    "name": ["Уфретин", "Ufretin", "尤佛瑞汀"],
     "specialtyUnit": [ 16, 17 ]
   },
   {
     "id": 19,
-    "name": ["Енова", "Jenova"]
+    "name": ["Енова", "Jenova", "杰诺娃"]
   },
   {
     "id": 20,
-    "name": ["Риланд", "Ryland"],
+    "name": ["Риланд", "Ryland", "罗伊德"],
     "specialtyUnit": [ 22, 23 ]
   },
   {
     "id": 21,
-    "name": ["Торгрим", "Thorgrim"]
+    "name": ["Торгрим", "Thorgrim", "索格灵"]
   },
   {
     "id": 22,
-    "name": ["Ивор", "Ivor"],
+    "name": ["Ивор", "Ivor", "伊沃"],
     "specialtyUnit": [ 18, 19 ]
   },
   {
     "id": 23,
-    "name": ["Кланси", "Clancy"],
+    "name": ["Кланси", "Clancy", "克兰"],
     "specialtyUnit": [ 24, 25 ]
   },
   {
     "id": 24,
-    "name": ["Киррь", "Kyrre"]
+    "name": ["Киррь", "Kyrre", "凯琳"]
   },
   {
     "id": 25,
-    "name": ["Корониус", "Coronius"],
+    "name": ["Корониус", "Coronius", "克洛尼斯"],
     "specialtySpell": "slayer"
   },
   {
     "id": 26,
-    "name": ["Уланд", "Uland"]
+    "name": ["Уланд", "Uland", "尤兰德"]
   },
   {
     "id": 27,
-    "name": ["Эллезар", "Elleshar"]
+    "name": ["Эллезар", "Elleshar", "艾丽莎"]
   },
   {
     "id": 28,
-    "name": ["Джем", "Gem"]
+    "name": ["Джем", "Gem", "珍尼"]
   },
   {
     "id": 29,
-    "name": ["Мальком", "Malcom"]
+    "name": ["Мальком", "Malcom", "马尔凯姆"]
   },
   {
     "id": 30,
-    "name": ["Мелодиа", "Melodia"]
+    "name": ["Мелодиа", "Melodia", "马洛迪亚"]
   },
   {
     "id": 31,
-    "name": ["Алагар", "Alagar"],
+    "name": ["Алагар", "Alagar", "艾拉戈"],
     "specialtySpell": "ice bolt"
   },
   {
     "id": 32,
-    "name": ["Аерис", "Aeris"],
+    "name": ["Аерис", "Aeris", "艾丽斯"],
     "specialtyUnit": [ 20, 21 ]
   },
   {
     "id": 33,
-    "name": ["Пигедрам", "Piquedram"],
+    "name": ["Пигедрам", "Piquedram", "匹克杰姆"],
     "specialtyUnit": [ 30, 31 ]
   },
   {
     "id": 34,
-    "name": ["Тан", "Thane"],
+    "name": ["Тан", "Thane", "塞恩"],
     "specialtyUnit": [ 36, 37 ]
   },
   {
     "id": 35,
-    "name": ["Жосефина", "Josephine"],
+    "name": ["Жосефина", "Josephine", "琼斯菲尔"],
     "specialtyUnit": [ 32, 33 ]
   },
   {
     "id": 36,
-    "name": ["Нила", "Neela"],
+    "name": ["Нила", "Neela", "妮拉"],
     "specialtySkill": "armorer"
   },
   {
     "id": 37,
-    "name": ["Торосар", "Torosar"],
+    "name": ["Торосар", "Torosar", "特洛萨"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 38,
-    "name": ["Фафнер", "Fafner"],
+    "name": ["Фафнер", "Fafner", "法佛纳"],
     "specialtyUnit": [ 38, 39 ]
   },
   {
     "id": 39,
-    "name": ["Ризза", "Rissa"]
+    "name": ["Ризза", "Rissa", "瑞萨"]
   },
   {
     "id": 40,
-    "name": ["Иона", "Iona"],
+    "name": ["Иона", "Iona", "罗娜"],
     "specialtyUnit": [ 36, 37 ]
   },
   {
     "id": 41,
-    "name": ["Астрал", "Astral"]
+    "name": ["Астрал", "Astral", "艾斯却尔"]
   },
   {
     "id": 42,
-    "name": ["Халон", "Halon"]
+    "name": ["Халон", "Halon", "海伦"]
   },
   {
     "id": 43,
-    "name": ["Серена", "Serena"]
+    "name": ["Серена", "Serena", "塞瑞纳"]
   },
   {
     "id": 44,
-    "name": ["Даремиф", "Daremyth"]
+    "name": ["Даремиф", "Daremyth", "黛瑞丝"]
   },
   {
     "id": 45,
-    "name": ["Теодор", "Theodorus"],
+    "name": ["Теодор", "Theodorus", "塞德洛斯"],
     "specialtyUnit": [ 34, 35 ]
   },
   {
     "id": 46,
-    "name": ["Солмир", "Solmyr"],
+    "name": ["Солмир", "Solmyr", "索姆拉"],
     "specialtySpell": "chain lightning"
   },
   {
     "id": 47,
-    "name": ["Кира", "Cyra"]
+    "name": ["Кира", "Cyra", "塞瑞"]
   },
   {
     "id": 48,
-    "name": ["Аин", "Aine"]
+    "name": ["Аин", "Aine", "埃尔尼"]
   },
   {
     "id": 49,
-    "name": ["Фиона", "Fiona"],
+    "name": ["Фиона", "Fiona", "斐欧纳"],
     "specialtyUnit": [ 74, 75 ]
   },
   {
     "id": 50,
-    "name": ["Рашка", "Rashka"],
+    "name": ["Рашка", "Rashka", "瑞斯卡"],
     "specialtyUnit": [ 80, 81 ]
   },
   {
     "id": 51,
-    "name": ["Мариус", "Marius"],
+    "name": ["Мариус", "Marius", "玛利斯"],
     "specialtyUnit": [ 76, 77 ]
   },
   {
     "id": 52,
-    "name": ["Игнат", "Ignatius"],
+    "name": ["Игнат", "Ignatius", "伊格纳蒂斯"],
     "specialtyUnit": [ 70, 71 ]
   },
   {
     "id": 53,
-    "name": ["Октавия", "Octavia"]
+    "name": ["Октавия", "Octavia", "奥格塔维亚"]
   },
   {
     "id": 54,
-    "name": ["Калх", "Calh"],
+    "name": ["Калх", "Calh", "卡尔"],
     "specialtyUnit": [ 72, 73 ]
   },
   {
     "id": 55,
-    "name": ["Пир", "Pyre"],
+    "name": ["Пир", "Pyre", "斐瑞"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 56,
-    "name": ["Нимус", "Nymus"],
+    "name": ["Нимус", "Nymus", "纳美斯"],
     "specialtyUnit": [ 78, 79 ]
   },
   {
     "id": 57,
-    "name": ["Айден", "Ayden"]
+    "name": ["Айден", "Ayden", "艾登"]
   },
   {
     "id": 58,
-    "name": ["Ксирон", "Xyron"],
+    "name": ["Ксирон", "Xyron", "希瑞尔"],
     "specialtySpell": "inferno"
   },
   {
     "id": 59,
-    "name": ["Аксис", "Axsis"]
+    "name": ["Аксис", "Axsis", "艾西斯"]
   },
   {
     "id": 60,
-    "name": ["Олема", "Olema"],
+    "name": ["Олема", "Olema", "奥力马"],
     "specialtySpell": "weakness"
   },
   {
     "id": 61,
-    "name": ["Калид", "Calid"]
+    "name": ["Калид", "Calid", "卡利德"]
   },
   {
     "id": 62,
-    "name": ["Аш", "Ash"],
+    "name": ["Аш", "Ash", "艾许"],
     "specialtySpell": "bloodlust"
   },
   {
     "id": 63,
-    "name": ["Зидар", "Zydar"],
+    "name": ["Зидар", "Zydar", "泽达"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 64,
-    "name": ["Ксарфакс", "Xarfax"],
+    "name": ["Ксарфакс", "Xarfax", "夏洛克斯"],
     "specialtySpell": "fireball"
   },
   {
     "id": 65,
-    "name": ["Стракер", "Straker"],
+    "name": ["Стракер", "Straker", "斯强克"],
     "specialtyUnit": [ 44, 45 ]
   },
   {
     "id": 66,
-    "name": ["Вокиал", "Vokial"],
+    "name": ["Вокиал", "Vokial", "德加尔"],
     "specialtyUnit": [ 48, 49 ]
   },
   {
     "id": 67,
-    "name": ["Моандор", "Moandor"],
+    "name": ["Моандор", "Moandor", "摩多"],
     "specialtyUnit": [ 50, 51 ]
   },
   {
     "id": 68,
-    "name": ["Чарна", "Charna"],
+    "name": ["Чарна", "Charna", "查玛"],
     "specialtyUnit": [ 46, 47 ]
   },
   {
     "id": 69,
-    "name": ["Тамика", "Tamika"],
+    "name": ["Тамика", "Tamika", "塔米克"],
     "specialtyUnit": [ 52, 53 ]
   },
   {
     "id": 70,
-    "name": ["Исра", "Isra"]
+    "name": ["Исра", "Isra", "艾莎"]
   },
   {
     "id": 71,
-    "name": ["Клавиус", "Clavius"]
+    "name": ["Клавиус", "Clavius", "克劳维斯"]
   },
   {
     "id": 72,
-    "name": ["Галтран", "Galthran"],
+    "name": ["Галтран", "Galthran", "凯瑟瑞"],
     "specialtyUnit": [ 42, 43 ]
   },
   {
     "id": 73,
-    "name": ["Септиенна", "Septienna"],
+    "name": ["Септиенна", "Septienna", "史蒂芬"],
     "specialtySpell": "destroy undead"
   },
   {
     "id": 74,
-    "name": ["Аислин", "Aislinn"],
+    "name": ["Аислин", "Aislinn", "艾斯瑞"],
     "specialtySpell": "meteor shower"
   },
   {
     "id": 75,
-    "name": ["Сандро", "Sandro"],
+    "name": ["Сандро", "Sandro", "山德鲁"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 76,
-    "name": ["Нимбус", "Nimbus"]
+    "name": ["Нимбус", "Nimbus", "尼姆巴斯"]
   },
   {
     "id": 77,
-    "name": ["Тант", "Thant"]
+    "name": ["Тант", "Thant", "山特"]
   },
   {
     "id": 78,
-    "name": ["Кси", "Xsi"],
+    "name": ["Кси", "Xsi", "希斯"],
     "specialtySpell": "stone skin"
   },
   {
     "id": 79,
-    "name": ["Видомина", "Vidomina"]
+    "name": ["Видомина", "Vidomina", "维德尼娜"]
   },
   {
     "id": 80,
-    "name": ["Нагаш", "Nagash"]
+    "name": ["Нагаш", "Nagash", "纳格斯"]
   },
   {
     "id": 81,
-    "name": ["Лорелей", "Lorelei"],
+    "name": ["Лорелей", "Lorelei", "罗勒雷"],
     "specialtyUnit": [ 58, 59 ]
   },
   {
     "id": 82,
-    "name": ["Арлаш", "Arlach"],
+    "name": ["Арлаш", "Arlach", "艾拉切"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 83,
-    "name": ["Дас", "Dace"],
+    "name": ["Дас", "Dace", "戴斯"],
     "specialtyUnit": [ 64, 65 ]
   },
   {
     "id": 84,
-    "name": ["Аджит", "Ajit"],
+    "name": ["Аджит", "Ajit", "艾杰特"],
     "specialtyUnit": [ 60, 61 ]
   },
   {
     "id": 85,
-    "name": ["Дамакон", "Damacon"]
+    "name": ["Дамакон", "Damacon", "黛玛克"]
   },
   {
     "id": 86,
-    "name": ["Гуннар", "Gunnar"]
+    "name": ["Гуннар", "Gunnar", "耿纳"]
   },
   {
     "id": 87,
-    "name": ["Синка", "Synca"],
+    "name": ["Синка", "Synca", "希力卡"],
     "specialtyUnit": [ 66, 67 ]
   },
   {
     "id": 88,
-    "name": ["Шакти", "Shakti"],
+    "name": ["Шакти", "Shakti", "莎克特"],
     "specialtyUnit": [ 56, 57 ]
   },
   {
     "id": 89,
-    "name": ["Аламар", "Alamar"]
+    "name": ["Аламар", "Alamar", "艾玛"]
   },
   {
     "id": 90,
-    "name": ["Жаегар", "Jaegar"]
+    "name": ["Жаегар", "Jaegar", "杰格"]
   },
   {
     "id": 91,
-    "name": ["Малекит", "Malekith"],
+    "name": ["Малекит", "Malekith", "马尔克斯"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 92,
-    "name": ["Жеддит", "Jeddite"]
+    "name": ["Жеддит", "Jeddite", "杰德特"]
   },
   {
     "id": 93,
-    "name": ["Геон", "Geon"]
+    "name": ["Геон", "Geon", "吉恩"]
   },
   {
     "id": 94,
-    "name": ["Деемер", "Deemer"],
+    "name": ["Деемер", "Deemer", "蒂玛"],
     "specialtySpell": "meteor shower"
   },
   {
     "id": 95,
-    "name": ["Сепхинороф", "Sephinroth"]
+    "name": ["Сепхинороф", "Sephinroth", "萨费罗斯"]
   },
   {
     "specialtySpell": "stone skin",
     "id": 96,
-    "name": ["Дарксторн", "Darkstorn"]
+    "name": ["Дарксторн", "Darkstorn", "达克斯多"]
   }
   ,
   {
     "id": 97,
-    "name": ["Йог", "Yog"],
+    "name": ["Йог", "Yog", "约克"],
     "specialtyUnit": [ 108, 109 ]
   },
   {
     "id": 98,
-    "name": ["Гурниссон", "Gurnisson"],
+    "name": ["Гурниссон", "Gurnisson", "格尼森"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 99,
-    "name": ["Жабаркас", "Jabarkas"],
+    "name": ["Жабаркас", "Jabarkas", "杰巴克斯"],
     "specialtyUnit": [ 102, 103 ]
   },
   {
     "id": 100,
-    "name": ["Шива", "Shiva"],
+    "name": ["Шива", "Shiva", "希娃"],
     "specialtyUnit": [ 106, 107 ]
   },
   {
     "id": 101,
-    "name": ["Гретчин", "Gretchin"],
+    "name": ["Гретчин", "Gretchin", "格兰切尔"],
     "specialtyUnit": [ 98, 99 ]
   },
   {
     "id": 102,
-    "name": ["Креллион", "Krellion"],
+    "name": ["Креллион", "Krellion", "克洛林"],
     "specialtyUnit": [ 104, 105 ]
   },
   {
     "id": 103,
-    "name": ["Крэг Хэк", "Crag Hack"],
+    "name": ["Крэг Хэк", "Crag Hack", "肯洛-哈格"],
     "specialtySkill": "offense"
   },
   {
     "id": 104,
-    "name": ["Тираксор", "Tyraxor"],
+    "name": ["Тираксор", "Tyraxor", "塔洛希尔"],
     "specialtyUnit": [ 100, 101 ]
   },
   {
     "id": 105,
-    "name": ["Гирд", "Gird"],
+    "name": ["Гирд", "Gird", "哥徳"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 106,
-    "name": ["Вей", "Voy"],
+    "name": ["Вей", "Voy", "维尔"],
     "specialtyUnit": [ 104, 105 ]
   },
   {
     "id": 107,
-    "name": ["Десса", "Dessa"]
+    "name": ["Десса", "Dessa", "德萨"]
   },
   {
     "id": 108,
-    "name": ["Терек", "Terek"]
+    "name": ["Терек", "Terek", "特洛克"]
   },
   {
     "id": 109,
-    "name": ["Зубин", "Zubin"],
+    "name": ["Зубин", "Zubin", "祖宾"],
     "specialtySpell": "precision"
   },
   {
     "id": 110,
-    "name": ["Гундула", "Gundula"],
+    "name": ["Гундула", "Gundula", "干德鲁"],
     "specialtySkill": "offense"
   },
   {
     "id": 111,
-    "name": ["Орис", "Oris"]
+    "name": ["Орис", "Oris", "奥力斯"]
   },
   {
     "id": 112,
-    "name": ["Сауруг", "Saurug"]
+    "name": ["Сауруг", "Saurug", "塞瑞格"]
   },
   {
     "id": 113,
-    "name": ["Брон", "Bron"],
+    "name": ["Брон", "Bron", "布朗"],
     "specialtyUnit": [ 90, 91 ]
   },
   {
     "id": 114,
-    "name": ["Дракон", "Drakon"],
+    "name": ["Дракон", "Drakon", "鲁肯"],
     "specialtyUnit": [ 84, 85 ]
   },
   {
     "id": 115,
-    "name": ["Вистан", "Wystan"],
+    "name": ["Вистан", "Wystan", "维斯特"],
     "specialtyUnit": [ 86, 87 ]
   },
   {
     "id": 116,
-    "name": ["Тазар", "Tazar"],
+    "name": ["Тазар", "Tazar", "泰泽"],
     "specialtySkill": "armorer"
   },
   {
     "id": 117,
-    "name": ["Алкин", "Alkin"],
+    "name": ["Алкин", "Alkin", "阿尔金"],
     "specialtyUnit": [ 92, 93 ]
   },
   {
     "id": 118,
-    "name": ["Корбак", "Korbac"],
+    "name": ["Корбак", "Korbac", "克巴斯"],
     "specialtyUnit": [ 88, 89 ]
   },
   {
     "id": 119,
-    "name": ["Гервульф", "Gerwulf"],
+    "name": ["Гервульф", "Gerwulf", "格伍夫"],
     "specialtyUnit": [ 158 ]
   },
   {
     "id": 120,
-    "name": ["Брохильд", "Broghild"],
+    "name": ["Брохильд", "Broghild", "布鲁菲德"],
     "specialtyUnit": [ 94, 95 ]
   },
   {
     "id": 121,
-    "name": ["Мирланда", "Mirlanda"],
+    "name": ["Мирланда", "Mirlanda", "麦林德"],
     "specialtySpell": "weakness"
   },
   {
     "id": 122,
-    "name": ["Розик", "Rosic"]
+    "name": ["Розик", "Rosic", "罗斯可"]
   },
   {
     "id": 123,
-    "name": ["Вой", "Voy"]
+    "name": ["Вой", "Voy", "傅尔"]
   },
   {
     "id": 124,
-    "name": ["Вердиш", "Verdish"]
+    "name": ["Вердиш", "Verdish", "威迪斯"]
   },
   {
     "id": 125,
-    "name": ["Мерист", "Merist"],
+    "name": ["Мерист", "Merist", "马利斯"],
     "specialtySpell": "stone skin"
   },
   {
     "id": 126,
-    "name": ["Стиг", "Styg"],
+    "name": ["Стиг", "Styg", "斯蒂格"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 127,
-    "name": ["Андра", "Andra"]
+    "name": ["Андра", "Andra", "安洁儿"]
   },
   {
     "id": 128,
-    "name": ["Тива", "Tiva"]
+    "name": ["Тива", "Tiva", "蒂娃"]
   },
   {
     "id": 129,
-    "name": ["Пасис", "Pasis"],
+    "name": ["Пасис", "Pasis", "帕里斯"],
     "specialtyUnit": [ 122, 123 ]
   },
   {
     "id": 130,
-    "name": ["Тунар", "Thunar"],
+    "name": ["Тунар", "Thunar", "索尔那"],
     "specialtyUnit": [ 120, 121 ]
   },
   {
     "id": 131,
-    "name": ["Игнисса", "Ignissa"],
+    "name": ["Игнисса", "Ignissa", "依格尼萨"],
     "specialtyUnit": [ 118, 119 ]
   },
   {
     "id": 132,
-    "name": ["Лакус", "Lacus"],
+    "name": ["Лакус", "Lacus", "拉克斯"],
     "specialtyUnit": [ 116, 117 ]
   },
   {
     "id": 133,
-    "name": ["Монер", "Monere"],
+    "name": ["Монер", "Monere", "莫奈尔"],
     "specialtyUnit": [ 122, 123 ]
   },
   {
     "id": 134,
-    "name": ["Эрдамон", "Erdamon"],
+    "name": ["Эрдамон", "Erdamon", "埃德蒙"],
     "specialtyUnit": [ 120, 121 ]
   },
   {
     "id": 135,
-    "name": ["Фьюр", "Fiur"],
+    "name": ["Фьюр", "Fiur", "费拉"],
     "specialtyUnit": [ 118, 119 ]
   },
   {
     "id": 136,
-    "name": ["Кальт", "Kalt"],
+    "name": ["Кальт", "Kalt", "凯尔特"],
     "specialtyUnit": [ 116, 117 ]
   },
   {
     "id": 137,
-    "name": ["Луна", "Luna"],
+    "name": ["Луна", "Luna", "露娜"],
     "specialtySpell": "fire wall"
   },
   {
     "id": 138,
-    "name": ["Брисса", "Brissa"]
+    "name": ["Брисса", "Brissa", "博丽斯"]
   },
   {
     "id": 139,
-    "name": ["Циель", "Ciele"],
+    "name": ["Циель", "Ciele", "萨丽尔"],
     "specialtySpell": "magic arrow"
   },
   {
     "id": 140,
-    "name": ["Лабета", "Labetha"],
+    "name": ["Лабета", "Labetha", "兰贝斯"],
     "specialtySpell": "stone skin"
   },
   {
     "id": 141,
-    "name": ["Интеус", "Inteus"],
+    "name": ["Интеус", "Inteus", "恩托斯"],
     "specialtySpell": "bloodlust"
   },
   {
     "id": 142,
-    "name": ["Аэнаин", "Aenain"],
+    "name": ["Аэнаин", "Aenain", "阿奈尔"],
     "specialtySpell": "disrupting ray"
   },
   {
     "id": 143,
-    "name": ["Джелар", "Gelare"]
+    "name": ["Джелар", "Gelare", "格雷尔"]
   },
   {
     "id": 144,
-    "name": ["Гриндан", "Grindan"]
+    "name": ["Гриндан", "Grindan", "格兰登"]
   },
   {
     "id": 145,
-    "name": ["Кассиопея", "Cassiopeia"],
+    "name": ["Кассиопея", "Cassiopeia", "卡茜欧佩雅"],
     "specialtyUnit": [ 141, 141 ]
   },
   {
     "id": 146,
-    "name": ["Коркес", "Corkes"],
+    "name": ["Коркес", "Corkes", "库尔科斯"],
     "specialtySkill": "offense"
   },
   {
     "id": 147,
-    "name": ["Джереми", "Jeremy"],
+    "name": ["Джереми", "Jeremy", "杰里米"],
     "specialtyUnit": [ 159 ]
   },
   {
     "id": 148,
-    "name": ["Иллор", "Illor"],
+    "name": ["Иллор", "Illor", "伊洛"],
     "specialtyUnit": [ 148, 149 ]
   },
   {
     "id": 149,
-    "name": ["Дерек", "Derek"],
+    "name": ["Дерек", "Derek", "德里克"],
     "specialtyUnit": [ 143, 144 ]
   },
   {
     "id": 150,
-    "name": ["Лина", "Leena"]
+    "name": ["Лина", "Leena", "莉娜"]
   },
   {
     "id": 151,
-    "name": ["Анабель", "Anabel"],
+    "name": ["Анабель", "Anabel", "安娜贝尔"],
     "specialtyUnit": [ 145, 146, 147 ]
   },
   {
     "id": 152,
-    "name": ["Мириам", "Miriam"]
+    "name": ["Мириам", "Miriam", "米莉亚"]
   },
   {
     "id": 153,
-    "name": ["Касметра", "Casmetra"],
+    "name": ["Касметра", "Casmetra", "卡斯梅特拉"],
     "specialtyUnit": [ 150, 151 ]
   },
   {
     "id": 154,
-    "name": ["Эоваций", "Eovacius"]
+    "name": ["Эоваций", "Eovacius", "埃瓦希斯"]
   },
   {
     "id": 155,
-    "name": ["Спинт", "Spint"],
+    "name": ["Спинт", "Spint", "史宾特"],
     "specialtySkill": "sorcery"
   },
   {
     "id": 156,
-    "name": ["Андал", "Andal"]
+    "name": ["Андал", "Andal", "安戴尔"]
   },
   {
     "id": 157,
-    "name": ["Манфред", "Manfred"],
+    "name": ["Манфред", "Manfred", "曼弗雷德"],
     "specialtySpell": "fireball"
   },
   {
     "id": 158,
-    "name": ["Зилар", "Zilare"]
+    "name": ["Зилар", "Zilare", "齐拉"]
   },
   {
     "id": 159,
-    "name": ["Астра", "Astra"]
+    "name": ["Астра", "Astra", "阿斯特拉"]
   },
   {
     "id": 160,
-    "name": ["Даргем", "Dargem"]
+    "name": ["Даргем", "Dargem", "达盖姆"]
   },
   {
     "id": 161,
-    "name": ["Жизель", "Giselle"]
+    "name": ["Жизель", "Giselle", "吉塞尔"]
   }
 ]

@@ -49,7 +49,7 @@ b-container.footer.mt-5
     b-row
       b-col(cols='12')
         i18n(path='aboutText' tag='p')
-          h3(place='calculator-title') Heroes III damage calculator
+          h3(place='calculator-title') 英雄无敌 III 伤害计算器
           u(
             class='c-pointer'
             place='desktop-version'
@@ -59,6 +59,8 @@ b-container.footer.mt-5
               | desktop version
             template(v-if='$store.state.user.locale === "ru"')
               | десктопной версии
+            template(v-if='$store.state.user.locale === "ch"')
+              | 桌面端版本
           br(place='br')
           u(class='c-pointer'
             place='error-form'
@@ -68,6 +70,8 @@ b-container.footer.mt-5
               | this
             template(v-if='$store.state.user.locale === "ru"')
               | эту
+            template(v-if='$store.state.user.locale === "ch"')
+              | 表单
           a(place='mail' href='mailto:18a221c6db0b96d8@gmail.com')
             | 18a221c6db0b96d8@gmail.com
 
@@ -142,6 +146,15 @@ b-container.footer.mt-5
         p 2. При выборе героя введите его имя и нажмите 'Enter'. Будет выбран первый найденный герой.
         img(src='images/how-to-use/shortcut-2.png' width='100%' height='auto')
 
+      b-col(v-if='howToUsePage === 11 && $store.state.user.locale === "ch"' class='text-center' cols='12')
+        p(class='h4 mb-5') 你可以使用快捷方式来输入：
+      b-col(v-if='howToUsePage === 11 && $store.state.user.locale === "ch"' class='text-center' cols='12' sm='12' md='12' lg='10' xl='10' offset='0' offset-sm='0' offset-md='0' offset-lg='1' offset-xl='1')
+        p 1. 选择单位时，在搜索框中输入名称，用键盘上的 'Enter' 键选择第一个搜索到的单位;
+        img(class='mb-5' src='images/how-to-use/shortcut-1.png' width='100%' height='auto')
+
+        p 2. 选择英雄时，在搜索框中输入名称，用键盘上的 'Enter' 键选择第一个搜索到的英雄。
+        img(src='images/how-to-use/shortcut-2.png' width='100%' height='auto')
+
     b-row(class='border-top')
       b-col(class='align-middle mt-3' cols='3')
         b-button(
@@ -154,6 +167,8 @@ b-container.footer.mt-5
             | Previous
           template(v-if='$store.state.user.locale === "ru"')
             | Назад
+          template(v-if='$store.state.user.locale === "ch"')
+            | 上一步
 
       b-col(class='mt-3' cols='4' offset='1')
         b-progress(class='mt-2' variant='success' :value='howToUseProgress')
@@ -169,6 +184,8 @@ b-container.footer.mt-5
             | Next
           template(v-if='$store.state.user.locale === "ru"')
             | Дальше
+          template(v-if='$store.state.user.locale === "ch"')
+            | 下一步
 
 </template>
 
@@ -235,7 +252,7 @@ export default {
 
 <style lang='scss' scoped>
 .footer {
-  border-top: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>
 
@@ -315,6 +332,44 @@ export default {
       "Введите такие же значения для вражеской стороны",
       "Выберите территорию поля боя",
       "Затем вы увидите значения урона"
+    ]
+  },
+  "ch": {
+    "about": "关于",
+    "how-to-use": "如何使用",
+    "license-information": "许可证信息",
+    "find-error-?": "发现错误？",
+    "source-code": "源代码",
+    "send-error": "报告错误",
+    "soon": "即将...",
+    "license": [
+      "Permission is hereby granted, free of charge, to any person obtaining a copy",
+      "of this software and associated documentation files (the 'Software'), to deal",
+      "in the Software without restriction, including without limitation the rights",
+      "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+      "copies of the Software, and to permit persons to whom the Software is",
+      "furnished to do so, subject to the following conditions:",
+      "The above copyright notice and this permission notice shall be included in all",
+      "copies or substantial portions of the Software.",
+      "THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR",
+      "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,",
+      "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE",
+      "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER",
+      "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,",
+      "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    ],
+    "aboutText": "{calculator-title} {br} 本软件用于计算在游戏魔法门之英雄无敌III：深渊号角中对生物（包括能力数值，技能，魔法和擅长的影响）造成的伤害。{br} {br} 本计算器并不绝对精确，但你可以帮助它变得更好。如果你想提供帮助：填写此{error-form}来报告错误。{br} {br} 本计算器基于{desktop-version}。 {br} {br} 发送邮件到 {mail} 来提供你的建议和改进。",
+    "how-to-use-text": [
+      "点击 '选择' 按钮或问号来选择单位",
+      "选择一个单位",
+      "输入单位数量",
+      "从列表中选择一个英雄",
+      "输入英雄等级，攻击和防御",
+      "选择英雄技能",
+      "选择影响单位的魔法",
+      "输入敌方数据",
+      "选择战场地形",
+      "然后你将可以看到伤害数值"
     ]
   }
 }

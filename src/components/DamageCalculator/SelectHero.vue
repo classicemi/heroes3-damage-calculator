@@ -24,6 +24,10 @@ multiselect(
     span(class='multiselect__selected ml-1' v-if='$store.state.user.locale === "ru"')
       | {{ props.option.name[0] }}
 
+    //- Third array element from json - chinese name
+    span(class='multiselect__selected ml-1' v-if='$store.state.user.locale === "ch"')
+      | {{ props.option.name[2] }}
+
   //- Show portraits in heroes list
   template(slot='option', slot-scope='props')
     img(:src='$store.state.calculator.images.heroes[props.option.id - 1].src')
@@ -35,6 +39,10 @@ multiselect(
     //- First array element from json - russian name
     span(class='ml-1' v-if='$store.state.user.locale === "ru"')
       | {{ props.option.name[0] }}
+
+    //- Third array element from json - chinese name
+    span(class='ml-1' v-if='$store.state.user.locale === "ch"')
+      | {{ props.option.name[2] }}
 </template>
 
 <script>

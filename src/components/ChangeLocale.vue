@@ -9,6 +9,7 @@ b-dropdown(
 )
   b-dropdown-item-button(class='text-muted btn-sm' @click='changeLocale("en")') English
   b-dropdown-item-button(class='text-muted btn-sm' @click='changeLocale("ru")') Русский
+  b-dropdown-item-button(class='text-muted btn-sm' @click='changeLocale("ch")') 简体中文
 </template>
 
 <script>
@@ -27,6 +28,8 @@ export default {
         this.setLocale('en')
       } else if (locale === 'ru') {
         this.setLocale('ru')
+      } else if (locale === 'ch') {
+        this.setLocale('ch')
       }
 
       let userLocalStorage = {
@@ -54,6 +57,9 @@ export default {
   },
   "ru": {
     "language": "Язык"
+  },
+  "ch": {
+    "language": "简体中文"
   }
 }
 </i18n>

@@ -11,16 +11,16 @@ b-container.mt-3: b-row.mb-3(): b-col.calculator(cols='12')
           h4 {{ $t('attacker') }}
         b-col(cols='12' sm='12' md='12' lg='12' xl='12'  v-if='$store.state.user.locale === "ru"')
           h4 {{ $t('attacker') }}
+        b-col(cols='12' sm='12' md='12' lg='3' xl='3'  v-if='$store.state.user.locale === "ch"')
+          h4 {{ $t('attacker') }}
 
         template(v-if='$store.state.user.locale === "en"')
           b-col(cols='9' sm='9' md='9' lg='9' xl='9' offset='3' offset-sm='3' offset-md='3' offset-lg='0' offset-xl='0')
             b-button(class='green-btn' size='sm' block @click='pickAttackerModalShow()' cypress-tag='pick-attacker-unit-button')
 
               template(v-if='attackerUnitSelected')
-                strong(v-if='$store.state.user.locale === "en"')
-                  | {{ $store.state.calculator.attacker.unit.name_en }}
-                strong(v-if='$store.state.user.locale === "ru"')
-                  | {{ $store.state.calculator.attacker.unit.name_ru }}
+                strong
+                  | {{ $store.state.calculator.attacker.unit.name_[$store.state.user.locale] }}
 
               template(v-if='!attackerUnitSelected')
                 | {{ $t('pick') }}
@@ -30,10 +30,19 @@ b-container.mt-3: b-row.mb-3(): b-col.calculator(cols='12')
             b-button(class='green-btn' size='sm' block @click='pickAttackerModalShow()' cypress-tag='pick-attacker-unit-button')
 
               template(v-if='attackerUnitSelected')
-                strong(v-if='$store.state.user.locale === "en"')
-                  | {{ $store.state.calculator.attacker.unit.name_en }}
-                strong(v-if='$store.state.user.locale === "ru"')
-                  | {{ $store.state.calculator.attacker.unit.name_ru }}
+                strong
+                  | {{ $store.state.calculator.attacker.unit.name_[$store.state.user.locale] }}
+
+              template(v-if='!attackerUnitSelected')
+                | {{ $t('pick') }}
+
+        template(v-if='$store.state.user.locale === "ch"')
+          b-col(cols='9' sm='9' md='9' lg='9' xl='9' offset='3' offset-sm='3' offset-md='3' offset-lg='0' offset-xl='0')
+            b-button(class='green-btn' size='sm' block @click='pickAttackerModalShow()' cypress-tag='pick-attacker-unit-button')
+
+              template(v-if='attackerUnitSelected')
+                strong
+                  | {{ $store.state.calculator.attacker.unit.name_[$store.state.user.locale] }}
 
               template(v-if='!attackerUnitSelected')
                 | {{ $t('pick') }}
@@ -79,7 +88,6 @@ b-container.mt-3: b-row.mb-3(): b-col.calculator(cols='12')
     b-col(class='defender border-top px-4 px-sm-4 px-md-4 px-lg-4 px-xl-4' cols='12' sm='12' md='12' lg='6' xl='6')
       b-row(class='mt-3 mb-3')
         template(v-if='$store.state.user.locale === "en"')
-
           //- Pick DEFENDER unit button
           b-col(class='order-2 order-sm-2 order-md-1 order-lg-1 order-xl-1' cols='9' sm='9' md='9' lg='9' xl='9')
             b-button(size='sm' variant='danger' block @click='pickDefenderModalShow()' cypress-tag='pick-defender-unit-button')
@@ -234,7 +242,11 @@ export default {
   },
   watch: {
     calculate () {
-      if (this.attackerUnitSelected && this.defenderUnitSelected && this.$store.state.calculator.calculate) {
+      if (
+        this.attackerUnitSelected &&
+        this.defenderUnitSelected &&
+        this.$store.state.calculator.calculate
+      ) {
         this.attacker.attack = this.$store.state.calculator.attacker.unit.stats.attack
         this.attacker.defense = this.$store.state.calculator.attacker.unit.stats.defense
         this.attacker.baseMinDamage = this.$store.state.calculator.attacker.unit.stats.minDamage
@@ -285,27 +297,63 @@ export default {
 
         if (this.attacker.attack > this.defender.defense) {
           // Max attack cap = 3
-          let attackDefenseDifference = Math.abs(0.05 * (this.attacker.attack - this.defender.defense))
+          let attackDefenseDifference = Math.abs(
+            0.05 * (this.attacker.attack - this.defender.defense)
+          )
 
           if (attackDefenseDifference > 3) {
             attackDefenseDifference = 3
           }
 
-          this.attacker.totalMinDamage = Math.abs(this.attacker.baseMinDamage * ((1 + attackDefenseDifference + this.attacker.damageBonus) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
-          this.attacker.totalMaxDamage = Math.abs(this.attacker.baseMaxDamage * ((1 + attackDefenseDifference + this.attacker.damageBonus) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
+          this.attacker.totalMinDamage = Math.abs(
+            this.attacker.baseMinDamage *
+              ((1 + attackDefenseDifference + this.attacker.damageBonus) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
+          this.attacker.totalMaxDamage = Math.abs(
+            this.attacker.baseMaxDamage *
+              ((1 + attackDefenseDifference + this.attacker.damageBonus) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
         } else if (this.attacker.attack === this.defender.defense) {
-          this.attacker.totalMinDamage = Math.abs(this.attacker.baseMinDamage * ((1 + this.attacker.damageBonus) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
-          this.attacker.totalMaxDamage = Math.abs(this.attacker.baseMaxDamage * ((1 + this.attacker.damageBonus) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
+          this.attacker.totalMinDamage = Math.abs(
+            this.attacker.baseMinDamage *
+              ((1 + this.attacker.damageBonus) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
+          this.attacker.totalMaxDamage = Math.abs(
+            this.attacker.baseMaxDamage *
+              ((1 + this.attacker.damageBonus) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
         } else if (this.attacker.attack < this.defender.defense) {
           // Max attack cap = 0.7
-          let attackDefenseDifference = Math.abs((this.defender.defense - this.attacker.attack) * 0.025)
+          let attackDefenseDifference = Math.abs(
+            (this.defender.defense - this.attacker.attack) * 0.025
+          )
 
           if (attackDefenseDifference > 0.7) {
             attackDefenseDifference = 0.7
           }
 
-          this.attacker.totalMinDamage = Math.abs(this.attacker.baseMinDamage * ((1 + this.attacker.damageBonus) * (1 - attackDefenseDifference) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
-          this.attacker.totalMaxDamage = Math.abs(this.attacker.baseMaxDamage * ((1 + this.attacker.damageBonus) * (1 - attackDefenseDifference) * (1 - this.defender.defenseBonus) * (1 - this.defender.defenseMagicBonus)))
+          this.attacker.totalMinDamage = Math.abs(
+            this.attacker.baseMinDamage *
+              ((1 + this.attacker.damageBonus) *
+                (1 - attackDefenseDifference) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
+          this.attacker.totalMaxDamage = Math.abs(
+            this.attacker.baseMaxDamage *
+              ((1 + this.attacker.damageBonus) *
+                (1 - attackDefenseDifference) *
+                (1 - this.defender.defenseBonus) *
+                (1 - this.defender.defenseMagicBonus))
+          )
         }
 
         this.attacker.totalMinDamage *= this.$store.state.calculator.attacker.unit.count
@@ -322,28 +370,62 @@ export default {
         // DEFENDER units count * DEFENDER unit damage * (1 - 0.025 * (ATTACKER defense - DEFENDER attack))
         if (this.defender.attack > this.attacker.defense) {
           // Max attack cap = 3
-          let attackDefenseDifference = 0.05 * (this.defender.attack - this.attacker.defense)
+          let attackDefenseDifference =
+            0.05 * (this.defender.attack - this.attacker.defense)
 
           if (attackDefenseDifference > 3) {
             attackDefenseDifference = 3
           }
 
-          this.defender.totalMinDamage = Math.abs(this.defender.baseMinDamage * ((1 + attackDefenseDifference + this.defender.damageBonus) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
-          this.defender.totalMaxDamage = Math.abs(this.defender.baseMaxDamage * ((1 + attackDefenseDifference + this.defender.damageBonus) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
+          this.defender.totalMinDamage = Math.abs(
+            this.defender.baseMinDamage *
+              ((1 + attackDefenseDifference + this.defender.damageBonus) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
+          this.defender.totalMaxDamage = Math.abs(
+            this.defender.baseMaxDamage *
+              ((1 + attackDefenseDifference + this.defender.damageBonus) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
         } else if (this.defender.attack === this.attacker.defense) {
           // if === then no cap
-          this.defender.totalMinDamage = Math.abs(this.defender.baseMinDamage * ((1 + this.defender.damageBonus) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
-          this.defender.totalMaxDamage = Math.abs(this.defender.baseMaxDamage * ((1 + this.defender.damageBonus) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
+          this.defender.totalMinDamage = Math.abs(
+            this.defender.baseMinDamage *
+              ((1 + this.defender.damageBonus) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
+          this.defender.totalMaxDamage = Math.abs(
+            this.defender.baseMaxDamage *
+              ((1 + this.defender.damageBonus) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
         } else if (this.defender.attack < this.attacker.defense) {
           // Max attack cap = 0.7
-          let attackDefenseDifference = (this.attacker.defense - this.defender.attack) * 0.025
+          let attackDefenseDifference =
+            (this.attacker.defense - this.defender.attack) * 0.025
 
           if (attackDefenseDifference > 0.7) {
             attackDefenseDifference = 0.7
           }
 
-          this.defender.totalMinDamage = Math.abs(this.defender.baseMinDamage * ((1 + this.defender.damageBonus) * (1 - attackDefenseDifference) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
-          this.defender.totalMaxDamage = Math.abs(this.defender.baseMaxDamage * ((1 + this.defender.damageBonus) * (1 - attackDefenseDifference) * (1 - this.attacker.defenseBonus) * (1 - this.attacker.defenseMagicBonus)))
+          this.defender.totalMinDamage = Math.abs(
+            this.defender.baseMinDamage *
+              ((1 + this.defender.damageBonus) *
+                (1 - attackDefenseDifference) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
+          this.defender.totalMaxDamage = Math.abs(
+            this.defender.baseMaxDamage *
+              ((1 + this.defender.damageBonus) *
+                (1 - attackDefenseDifference) *
+                (1 - this.attacker.defenseBonus) *
+                (1 - this.attacker.defenseMagicBonus))
+          )
         }
 
         this.defender.totalMinDamage *= this.$store.state.calculator.defender.unit.count
@@ -352,19 +434,41 @@ export default {
         // Transform total damages
         this.attacker.totalMinDamage = Math.floor(this.attacker.totalMinDamage)
         this.attacker.totalMaxDamage = Math.floor(this.attacker.totalMaxDamage)
-        this.attacker.averageDamage = Math.floor((this.attacker.totalMinDamage + this.attacker.totalMaxDamage) / 2)
+        this.attacker.averageDamage = Math.floor(
+          (this.attacker.totalMinDamage + this.attacker.totalMaxDamage) / 2
+        )
 
-        let attackerTotalMinKills = Math.floor(this.attacker.totalMinDamage / this.$store.state.calculator.defender.unit.stats.health)
-        let attackerTotalMaxKills = Math.floor(this.attacker.totalMaxDamage / this.$store.state.calculator.defender.unit.stats.health)
-        let attackerTotalAverageKills = Math.floor(this.attacker.averageDamage / this.$store.state.calculator.defender.unit.stats.health)
+        let attackerTotalMinKills = Math.floor(
+          this.attacker.totalMinDamage /
+            this.$store.state.calculator.defender.unit.stats.health
+        )
+        let attackerTotalMaxKills = Math.floor(
+          this.attacker.totalMaxDamage /
+            this.$store.state.calculator.defender.unit.stats.health
+        )
+        let attackerTotalAverageKills = Math.floor(
+          this.attacker.averageDamage /
+            this.$store.state.calculator.defender.unit.stats.health
+        )
 
         this.defender.totalMinDamage = Math.floor(this.defender.totalMinDamage)
         this.defender.totalMaxDamage = Math.floor(this.defender.totalMaxDamage)
-        this.defender.averageDamage = Math.floor((this.defender.totalMinDamage + this.defender.totalMaxDamage) / 2)
+        this.defender.averageDamage = Math.floor(
+          (this.defender.totalMinDamage + this.defender.totalMaxDamage) / 2
+        )
 
-        let defenderTotalMinKills = Math.floor(this.defender.totalMinDamage / this.$store.state.calculator.attacker.unit.stats.health)
-        let defenderTotalMaxKills = Math.floor(this.defender.totalMaxDamage / this.$store.state.calculator.attacker.unit.stats.health)
-        let defenderTotalAverageKills = Math.floor(this.defender.averageDamage / this.$store.state.calculator.attacker.unit.stats.health)
+        let defenderTotalMinKills = Math.floor(
+          this.defender.totalMinDamage /
+            this.$store.state.calculator.attacker.unit.stats.health
+        )
+        let defenderTotalMaxKills = Math.floor(
+          this.defender.totalMaxDamage /
+            this.$store.state.calculator.attacker.unit.stats.health
+        )
+        let defenderTotalAverageKills = Math.floor(
+          this.defender.averageDamage /
+            this.$store.state.calculator.attacker.unit.stats.health
+        )
 
         this.setResultDamage({
           side: 'attacker',
@@ -420,18 +524,32 @@ export default {
       this.$refs.selectDefenderModal.hide()
     },
     calculateStatsModification () {
-      this.attacker.attack += parseInt(this.$store.state.calculator.attacker.hero.attack)
-      this.attacker.defense += parseInt(this.$store.state.calculator.attacker.hero.defense)
+      this.attacker.attack += parseInt(
+        this.$store.state.calculator.attacker.hero.attack
+      )
+      this.attacker.defense += parseInt(
+        this.$store.state.calculator.attacker.hero.defense
+      )
 
-      this.defender.attack += parseInt(this.$store.state.calculator.defender.hero.attack)
-      this.defender.defense += parseInt(this.$store.state.calculator.defender.hero.defense)
+      this.defender.attack += parseInt(
+        this.$store.state.calculator.defender.hero.attack
+      )
+      this.defender.defense += parseInt(
+        this.$store.state.calculator.defender.hero.defense
+      )
 
       if (this.$store.state.calculator.terrain) {
-        if (this.$store.state.calculator.attacker.unit.nativeTerrain === this.$store.state.calculator.terrain) {
+        if (
+          this.$store.state.calculator.attacker.unit.nativeTerrain ===
+          this.$store.state.calculator.terrain
+        ) {
           this.attacker.attack++
           this.attacker.defense++
         }
-        if (this.$store.state.calculator.defender.unit.nativeTerrain === this.$store.state.calculator.terrain) {
+        if (
+          this.$store.state.calculator.defender.unit.nativeTerrain ===
+          this.$store.state.calculator.terrain
+        ) {
           this.defender.attack++
           this.defender.defense++
         }
@@ -439,9 +557,21 @@ export default {
 
       // ATTACKER hero unit specialty bonus
       if (this.$store.state.calculator.attacker.hero.specialtyUnit) {
-        if (this.$store.state.calculator.attacker.hero.specialtyUnit.includes(this.$store.state.calculator.attacker.unit.id)) {
-          this.attacker.attack *= 1 + this.$store.state.calculator.attacker.hero.level / this.$store.state.calculator.attacker.unit.level * 0.05
-          this.attacker.defense *= 1 + this.$store.state.calculator.attacker.hero.level / this.$store.state.calculator.attacker.unit.level * 0.05
+        if (
+          this.$store.state.calculator.attacker.hero.specialtyUnit.includes(
+            this.$store.state.calculator.attacker.unit.id
+          )
+        ) {
+          this.attacker.attack *=
+            1 +
+            (this.$store.state.calculator.attacker.hero.level /
+              this.$store.state.calculator.attacker.unit.level) *
+              0.05
+          this.attacker.defense *=
+            1 +
+            (this.$store.state.calculator.attacker.hero.level /
+              this.$store.state.calculator.attacker.unit.level) *
+              0.05
 
           this.attacker.attack = Math.ceil(this.attacker.attack)
           this.attacker.defense = Math.ceil(this.attacker.defense)
@@ -452,9 +582,16 @@ export default {
         // ATTACKER stats buffs
 
         // Bloodlust spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Bloodlust')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes(
+            'Bloodlust'
+          )
+        ) {
           // Bloodlust spell hero specialty bonus
-          if (this.$store.state.calculator.attacker.hero.specialtySpell === 'bloodlust') {
+          if (
+            this.$store.state.calculator.attacker.hero.specialtySpell ===
+            'bloodlust'
+          ) {
             if (this.$store.state.calculator.attacker.hero.level <= 2) {
               this.attacker.attack += 3
             } else if (this.$store.state.calculator.attacker.unit.level <= 4) {
@@ -472,7 +609,9 @@ export default {
         }
 
         // Frenzy spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Frenzy')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes('Frenzy')
+        ) {
           if (this.$store.state.calculator.attacker.hero.fire < 2) {
             this.attacker.attack += this.attacker.defense
           } else if (this.$store.state.calculator.attacker.hero.fire === 2) {
@@ -484,8 +623,25 @@ export default {
         }
 
         // Slayer spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Slayer')) {
-          let units = [26, 27, 54, 55, 68, 69, 96, 97, 110, 111, 137, 138, 139, 140]
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes('Slayer')
+        ) {
+          let units = [
+            26,
+            27,
+            54,
+            55,
+            68,
+            69,
+            96,
+            97,
+            110,
+            111,
+            137,
+            138,
+            139,
+            140
+          ]
           if (this.$store.state.calculator.attacker.hero.fire === 2) {
             units.push(12, 13, 82, 83)
           } else if (this.$store.state.calculator.attacker.hero.fire === 3) {
@@ -499,9 +655,14 @@ export default {
         }
 
         // Prayer spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Prayer')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes('Prayer')
+        ) {
           // Prayer spell hero specialty bonus
-          if (this.$store.state.calculator.attacker.hero.specialtySpell === 'prayer') {
+          if (
+            this.$store.state.calculator.attacker.hero.specialtySpell ===
+            'prayer'
+          ) {
             if (this.$store.state.calculator.attacker.unit.level <= 2) {
               this.attacker.attack += 3
               this.attacker.defense += 3
@@ -524,9 +685,17 @@ export default {
         }
 
         // Precision spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Precision') && this.$store.state.calculator.attacker.unit.ranged) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes(
+            'Precision'
+          ) &&
+          this.$store.state.calculator.attacker.unit.ranged
+        ) {
           // Precision hero specialty bonus
-          if (this.$store.state.calculator.attacker.hero.specialtySpell === 'precision') {
+          if (
+            this.$store.state.calculator.attacker.hero.specialtySpell ===
+            'precision'
+          ) {
             if (this.$store.state.calculator.attacker.unit.level <= 2) {
               this.attacker.attack += 3
             } else if (this.$store.state.calculator.attacker.unit.level <= 4) {
@@ -544,9 +713,16 @@ export default {
         }
 
         // Stone skin spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Stone Skin')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes(
+            'Stone Skin'
+          )
+        ) {
           // Stone skin hero specialty bonus
-          if (this.$store.state.calculator.attacker.hero.specialtySpell === 'stone skin') {
+          if (
+            this.$store.state.calculator.attacker.hero.specialtySpell ===
+            'stone skin'
+          ) {
             if (this.$store.state.calculator.attacker.unit.level <= 2) {
               this.attacker.defense += 3
             } else if (this.$store.state.calculator.attacker.unit.level <= 4) {
@@ -566,9 +742,16 @@ export default {
         // ATTACKER stats debuffs
 
         // Weakness spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Weakness')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes(
+            'Weakness'
+          )
+        ) {
           // Weakness hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'weakness') {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'weakness'
+          ) {
             if (this.$store.state.calculator.attacker.unit.level <= 2) {
               this.attacker.attack -= 3
             } else if (this.$store.state.calculator.attacker.unit.level <= 4) {
@@ -586,9 +769,16 @@ export default {
         }
 
         // Disrupting Ray spell
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Disrupting Ray')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes(
+            'Disrupting Ray'
+          )
+        ) {
           // Disrupting Ray hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'disrupting ray') {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'disrupting ray'
+          ) {
             this.attacker.defense -= 2
           }
 
@@ -606,9 +796,21 @@ export default {
 
       // DEFENDER hero unit specialty bonus
       if (this.$store.state.calculator.defender.hero.specialtyUnit) {
-        if (this.$store.state.calculator.defender.hero.specialtyUnit.includes(this.$store.state.calculator.defender.unit.id)) {
-          this.defender.attack *= 1 + this.$store.state.calculator.defender.hero.level / this.$store.state.calculator.defender.unit.level * 0.05
-          this.defender.defense *= 1 + this.$store.state.calculator.defender.hero.level / this.$store.state.calculator.defender.unit.level * 0.05
+        if (
+          this.$store.state.calculator.defender.hero.specialtyUnit.includes(
+            this.$store.state.calculator.defender.unit.id
+          )
+        ) {
+          this.defender.attack *=
+            1 +
+            (this.$store.state.calculator.defender.hero.level /
+              this.$store.state.calculator.defender.unit.level) *
+              0.05
+          this.defender.defense *=
+            1 +
+            (this.$store.state.calculator.defender.hero.level /
+              this.$store.state.calculator.defender.unit.level) *
+              0.05
 
           this.defender.attack = Math.ceil(this.defender.attack)
           this.defender.defense = Math.ceil(this.defender.defense)
@@ -617,8 +819,15 @@ export default {
 
       if (this.$store.state.calculator.defender.unit.effects.length > 0) {
         // Bloodlust spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Bloodlust')) {
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'bloodlust') {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes(
+            'Bloodlust'
+          )
+        ) {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'bloodlust'
+          ) {
             if (this.$store.state.calculator.defender.unit.level <= 2) {
               this.defender.attack += 3
             } else if (this.$store.state.calculator.defender.unit.level <= 4) {
@@ -636,7 +845,9 @@ export default {
         }
 
         // Frenzy spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Frenzy')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes('Frenzy')
+        ) {
           if (this.$store.state.calculator.defender.hero.fire < 2) {
             this.defender.attack += this.defender.defense
           } else if (this.$store.state.calculator.defender.hero.fire === 2) {
@@ -648,8 +859,25 @@ export default {
         }
 
         // Slayer spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Slayer')) {
-          let units = [26, 27, 54, 55, 68, 69, 96, 97, 110, 111, 137, 138, 139, 140]
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes('Slayer')
+        ) {
+          let units = [
+            26,
+            27,
+            54,
+            55,
+            68,
+            69,
+            96,
+            97,
+            110,
+            111,
+            137,
+            138,
+            139,
+            140
+          ]
           if (this.$store.state.calculator.defender.hero.fire === 2) {
             units.push(12, 13, 82, 83)
           } else if (this.$store.state.calculator.defender.hero.fire === 3) {
@@ -663,9 +891,14 @@ export default {
         }
 
         // Prayer spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Prayer')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes('Prayer')
+        ) {
           // Prayer spell hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'prayer') {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'prayer'
+          ) {
             if (this.$store.state.calculator.defender.unit.level <= 2) {
               this.defender.attack += 3
               this.defender.defense += 3
@@ -688,8 +921,16 @@ export default {
         }
 
         // Precision spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Precision') && this.$store.state.calculator.defender.unit.ranged) {
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'precision') {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes(
+            'Precision'
+          ) &&
+          this.$store.state.calculator.defender.unit.ranged
+        ) {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'precision'
+          ) {
             if (this.$store.state.calculator.defender.unit.level <= 2) {
               this.defender.attack += 3
             } else if (this.$store.state.calculator.defender.unit.level <= 4) {
@@ -707,9 +948,16 @@ export default {
         }
 
         // Stone skin spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Stone Skin')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes(
+            'Stone Skin'
+          )
+        ) {
           // Stone skin hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'stone skin') {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'stone skin'
+          ) {
             if (this.$store.state.calculator.defender.unit.level <= 2) {
               this.defender.defense += 3
             } else if (this.$store.state.calculator.defender.unit.level <= 4) {
@@ -729,9 +977,16 @@ export default {
         // ATTACKER stats debuffs
 
         // Weakness spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Weakness')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes(
+            'Weakness'
+          )
+        ) {
           // Weakness hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'weakness') {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'weakness'
+          ) {
             if (this.$store.state.calculator.defender.unit.level <= 2) {
               this.defender.attack -= 3
             } else if (this.$store.state.calculator.defender.unit.level <= 4) {
@@ -749,9 +1004,16 @@ export default {
         }
 
         // Disrupting Ray spell
-        if (this.$store.state.calculator.defender.unit.effects.includes('Disrupting Ray')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes(
+            'Disrupting Ray'
+          )
+        ) {
           // Disrupting Ray hero specialty bonus
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'disrupting ray') this.$store.state.calculator.defender.stats.defense -= 2
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'disrupting ray'
+          ) { this.$store.state.calculator.defender.stats.defense -= 2 }
 
           if (this.$store.state.calculator.attacker.hero.air < 2) {
             this.defender.defense -= 3
@@ -766,9 +1028,16 @@ export default {
 
     calculateBlessModificator () {
       if (this.$store.state.calculator.attacker.unit.effects.length > 0) {
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Bless')) {
-          if (this.$store.state.calculator.attacker.hero.specialtySpell === 'bless') {
-            this.attacker.damageBonus += 0.03 * this.$store.state.calculator.attacker.hero.level / this.$store.state.calculator.attacker.unit.level
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes('Bless')
+        ) {
+          if (
+            this.$store.state.calculator.attacker.hero.specialtySpell ===
+            'bless'
+          ) {
+            this.attacker.damageBonus +=
+              (0.03 * this.$store.state.calculator.attacker.hero.level) /
+              this.$store.state.calculator.attacker.unit.level
           }
           if (this.$store.state.calculator.attacker.hero.water < 2) {
             this.attacker.baseMinDamage = this.attacker.baseMaxDamage
@@ -780,9 +1049,16 @@ export default {
       }
 
       if (this.$store.state.calculator.defender.unit.effects.length > 0) {
-        if (this.$store.state.calculator.defender.unit.effects.includes('Bless')) {
-          if (this.$store.state.calculator.defender.hero.specialtySpell === 'bless') {
-            this.defender.damageBonus += 0.03 * this.$store.state.calculator.defender.hero.level / this.$store.state.calculator.defender.unit.level
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes('Bless')
+        ) {
+          if (
+            this.$store.state.calculator.defender.hero.specialtySpell ===
+            'bless'
+          ) {
+            this.defender.damageBonus +=
+              (0.03 * this.$store.state.calculator.defender.hero.level) /
+              this.$store.state.calculator.defender.unit.level
           }
           if (this.$store.state.calculator.defender.hero.water < 2) {
             this.defender.baseMinDamage = this.defender.baseMaxDamage
@@ -796,7 +1072,9 @@ export default {
     calculateCurseModificator () {
       // For ATTACKER
       if (this.$store.state.calculator.attacker.unit.effects.length > 0) {
-        if (this.$store.state.calculator.attacker.unit.effects.includes('Curse')) {
+        if (
+          this.$store.state.calculator.attacker.unit.effects.includes('Curse')
+        ) {
           if (this.$store.state.calculator.defender.hero.fire < 2) {
             this.attacker.baseMaxDamage = this.attacker.baseMinDamage
           } else if (this.$store.state.calculator.defender.hero.fire > 1) {
@@ -808,7 +1086,9 @@ export default {
 
       // For DEFENDER
       if (this.$store.state.calculator.defender.unit.effects.length > 0) {
-        if (this.$store.state.calculator.defender.unit.effects.includes('Curse')) {
+        if (
+          this.$store.state.calculator.defender.unit.effects.includes('Curse')
+        ) {
           if (this.$store.state.calculator.attacker.hero.fire < 2) {
             this.defender.baseMaxDamage = this.defender.baseMinDamage
           } else if (this.$store.state.calculator.attacker.hero.fire > 1) {
@@ -824,16 +1104,24 @@ export default {
       let defenderSkillBonus = 0
 
       if (this.$store.state.calculator.attacker.hero.id) {
-        attackerSkillBonus = 1 + 0.05 * this.$store.state.calculator.attacker.hero.level
+        attackerSkillBonus =
+          1 + 0.05 * this.$store.state.calculator.attacker.hero.level
       }
       if (this.$store.state.calculator.attacker.hero.id) {
-        defenderSkillBonus = 1 + 0.05 * this.$store.state.calculator.defender.hero.level
+        defenderSkillBonus =
+          1 + 0.05 * this.$store.state.calculator.defender.hero.level
       }
 
       // Offense ATTACKER skill bonus
-      if (this.$store.state.calculator.attacker.hero.offense > 0 && !this.$store.state.calculator.attacker.unit.ranged) {
+      if (
+        this.$store.state.calculator.attacker.hero.offense > 0 &&
+        !this.$store.state.calculator.attacker.unit.ranged
+      ) {
         let bonus = 0.1 * this.$store.state.calculator.attacker.hero.offense
-        if (this.$store.state.calculator.attacker.hero.specialtySkill === 'offense') {
+        if (
+          this.$store.state.calculator.attacker.hero.specialtySkill ===
+          'offense'
+        ) {
           bonus *= attackerSkillBonus
           if (bonus > 1.92) {
             bonus = 1.92
@@ -845,7 +1133,10 @@ export default {
       // Armorer ATTACKER skill bonus
       if (this.$store.state.calculator.attacker.hero.armorer > 0) {
         let bonus = 0.05 * this.$store.state.calculator.attacker.hero.armorer
-        if (this.$store.state.calculator.attacker.hero.specialtySkill === 'armorer') {
+        if (
+          this.$store.state.calculator.attacker.hero.specialtySkill ===
+          'armorer'
+        ) {
           bonus *= attackerSkillBonus
           if (bonus > 0.7) {
             bonus = 0.7
@@ -855,7 +1146,10 @@ export default {
       }
 
       // Archery ATTACKER skill bonus
-      if (this.$store.state.calculator.attacker.hero.archery > 0 && this.$store.state.calculator.attacker.unit.ranged) {
+      if (
+        this.$store.state.calculator.attacker.hero.archery > 0 &&
+        this.$store.state.calculator.attacker.unit.ranged
+      ) {
         let bonus = 0
         if (this.$store.state.calculator.attacker.hero.archery === 1) {
           bonus = 0.1
@@ -865,7 +1159,10 @@ export default {
           bonus = 0.5
         }
 
-        if (this.$store.state.calculator.attacker.hero.specialtySkill === 'archery') {
+        if (
+          this.$store.state.calculator.attacker.hero.specialtySkill ===
+          'archery'
+        ) {
           bonus *= attackerSkillBonus
           if (bonus > 3.2) {
             bonus = 3.2
@@ -875,7 +1172,11 @@ export default {
       }
 
       // Artillery ATTACKER skill bonus (for ballista and cannon only)
-      if (this.$store.state.calculator.attacker.hero.artillery > 0 && (this.$store.state.calculator.attacker.unit.id === 158 || this.$store.state.calculator.attacker.unit.id === 159)) {
+      if (
+        this.$store.state.calculator.attacker.hero.artillery > 0 &&
+        (this.$store.state.calculator.attacker.unit.id === 158 ||
+          this.$store.state.calculator.attacker.unit.id === 159)
+      ) {
         if (this.$store.state.calculator.attacker.hero.artillery === 3) {
           this.attacker.baseMinDamage *= 2
           this.attacker.baseMaxDamage *= 2
@@ -883,7 +1184,9 @@ export default {
       }
 
       // ATTACKER shield spell
-      if (this.$store.state.calculator.attacker.unit.effects.includes('Shield')) {
+      if (
+        this.$store.state.calculator.attacker.unit.effects.includes('Shield')
+      ) {
         if (this.$store.state.calculator.attacker.hero.earth < 2) {
           this.attacker.defenseMagicBonus += 0.15
         } else if (this.$store.state.calculator.attacker.hero.earth > 1) {
@@ -892,7 +1195,12 @@ export default {
       }
 
       // DEFENDER air shield spell
-      if (this.$store.state.calculator.attacker.unit.effects.includes('Air Shield') && this.$store.state.calculator.defender.unit.ranged) {
+      if (
+        this.$store.state.calculator.attacker.unit.effects.includes(
+          'Air Shield'
+        ) &&
+        this.$store.state.calculator.defender.unit.ranged
+      ) {
         if (this.$store.state.calculator.attacker.hero.air < 2) {
           this.attacker.defenseMagicBonus += 0.25
         } else if (this.$store.state.calculator.attacker.hero.air > 1) {
@@ -903,9 +1211,15 @@ export default {
       // For DEFENDER
 
       // Offense DEFENDER skill bonus
-      if (this.$store.state.calculator.defender.hero.offense > 0 && !this.$store.state.calculator.defender.unit.ranged) {
+      if (
+        this.$store.state.calculator.defender.hero.offense > 0 &&
+        !this.$store.state.calculator.defender.unit.ranged
+      ) {
         let bonus = 0.1 * this.$store.state.calculator.defender.hero.offense
-        if (this.$store.state.calculator.defender.hero.specialtySkill === 'offense') {
+        if (
+          this.$store.state.calculator.defender.hero.specialtySkill ===
+          'offense'
+        ) {
           bonus *= defenderSkillBonus
           if (bonus > 1.92) {
             bonus = 1.92
@@ -917,7 +1231,10 @@ export default {
       // Armorer DEFENDER skill bonus
       if (this.$store.state.calculator.defender.hero.armorer > 0) {
         let bonus = 0.05 * this.$store.state.calculator.defender.hero.armorer
-        if (this.$store.state.calculator.defender.hero.specialtySkill === 'armorer') {
+        if (
+          this.$store.state.calculator.defender.hero.specialtySkill ===
+          'armorer'
+        ) {
           bonus *= defenderSkillBonus
           if (bonus > 0.7) {
             bonus = 0.7
@@ -927,7 +1244,10 @@ export default {
       }
 
       // Archery DEFENDER skill bonus
-      if (this.$store.state.calculator.defender.hero.archery > 0 && this.$store.state.calculator.defender.unit.ranged) {
+      if (
+        this.$store.state.calculator.defender.hero.archery > 0 &&
+        this.$store.state.calculator.defender.unit.ranged
+      ) {
         let bonus = 0
         if (this.$store.state.calculator.defender.hero.archery === 1) {
           bonus = 0.1
@@ -937,7 +1257,10 @@ export default {
           bonus = 0.5
         }
 
-        if (this.$store.state.calculator.defender.hero.specialtySkill === 'archery') {
+        if (
+          this.$store.state.calculator.defender.hero.specialtySkill ===
+          'archery'
+        ) {
           bonus *= defenderSkillBonus
           if (bonus > 3.2) {
             bonus = 3.2
@@ -947,7 +1270,11 @@ export default {
       }
 
       // Artillery DEFENDER skill bonus (for ballista and cannon only)
-      if (this.$store.state.calculator.defender.hero.artillery > 0 && (this.$store.state.calculator.defender.unit.id === 158 || this.$store.state.calculator.defender.unit.id === 159)) {
+      if (
+        this.$store.state.calculator.defender.hero.artillery > 0 &&
+        (this.$store.state.calculator.defender.unit.id === 158 ||
+          this.$store.state.calculator.defender.unit.id === 159)
+      ) {
         if (this.$store.state.calculator.defender.hero.artillery === 3) {
           this.defender.baseMinDamage *= 2
           this.defender.baseMaxDamage *= 2
@@ -955,7 +1282,9 @@ export default {
       }
 
       // DEFENDER shield spell
-      if (this.$store.state.calculator.defender.unit.effects.includes('Shield')) {
+      if (
+        this.$store.state.calculator.defender.unit.effects.includes('Shield')
+      ) {
         if (this.$store.state.calculator.defender.hero.earth < 2) {
           this.defender.defenseMagicBonus += 0.15
         } else if (this.$store.state.calculator.defender.hero.earth > 1) {
@@ -964,7 +1293,12 @@ export default {
       }
 
       // DEFENDER air shield spell
-      if (this.$store.state.calculator.defender.unit.effects.includes('Air Shield') && this.$store.state.calculator.attacker.unit.ranged) {
+      if (
+        this.$store.state.calculator.defender.unit.effects.includes(
+          'Air Shield'
+        ) &&
+        this.$store.state.calculator.attacker.unit.ranged
+      ) {
         if (this.$store.state.calculator.defender.hero.air < 2) {
           this.defender.defenseMagicBonus += 0.25
         } else if (this.$store.state.calculator.defender.hero.air > 1) {
@@ -976,7 +1310,13 @@ export default {
       let hates = false
 
       for (let i = 0; i < this.$store.state.calculator.hates.length; i++) {
-        if (this.$store.state.calculator.hates[i].id === this.$store.state.calculator.attacker.unit.id && this.$store.state.calculator.hates[i].hate.includes(this.$store.state.calculator.defender.unit.id)) {
+        if (
+          this.$store.state.calculator.hates[i].id ===
+            this.$store.state.calculator.attacker.unit.id &&
+          this.$store.state.calculator.hates[i].hate.includes(
+            this.$store.state.calculator.defender.unit.id
+          )
+        ) {
           hates = true
         }
       }
@@ -988,19 +1328,43 @@ export default {
     },
     calculateArtillery () {
       if (this.$store.state.calculator.attacker.unit.id === 158) {
-        this.attacker.baseMinDamage += (this.attacker.attack - this.$store.state.calculator.attacker.unit.stats.attack) * 2
-        this.attacker.baseMaxDamage += (this.attacker.attack - this.$store.state.calculator.attacker.unit.stats.attack) * 3
+        this.attacker.baseMinDamage +=
+          (this.attacker.attack -
+            this.$store.state.calculator.attacker.unit.stats.attack) *
+          2
+        this.attacker.baseMaxDamage +=
+          (this.attacker.attack -
+            this.$store.state.calculator.attacker.unit.stats.attack) *
+          3
       } else if (this.$store.state.calculator.attacker.unit.id === 159) {
-        this.attacker.baseMinDamage += (this.attacker.attack - this.$store.state.calculator.attacker.unit.stats.attack) * 4
-        this.attacker.baseMaxDamage += (this.attacker.attack - this.$store.state.calculator.attacker.unit.stats.attack) * 7
+        this.attacker.baseMinDamage +=
+          (this.attacker.attack -
+            this.$store.state.calculator.attacker.unit.stats.attack) *
+          4
+        this.attacker.baseMaxDamage +=
+          (this.attacker.attack -
+            this.$store.state.calculator.attacker.unit.stats.attack) *
+          7
       }
 
       if (this.$store.state.calculator.defender.unit.id === 158) {
-        this.defender.baseMinDamage += (this.defender.attack - this.$store.state.calculator.defender.unit.stats.attack) * 2
-        this.defender.baseMaxDamage += (this.defender.attack - this.$store.state.calculator.defender.unit.stats.attack) * 3
+        this.defender.baseMinDamage +=
+          (this.defender.attack -
+            this.$store.state.calculator.defender.unit.stats.attack) *
+          2
+        this.defender.baseMaxDamage +=
+          (this.defender.attack -
+            this.$store.state.calculator.defender.unit.stats.attack) *
+          3
       } else if (this.$store.state.calculator.defender.unit.id === 159) {
-        this.defender.baseMinDamage += (this.defender.attack - this.$store.state.calculator.defender.unit.stats.attack) * 4
-        this.defender.baseMaxDamage += (this.defender.attack - this.$store.state.calculator.defender.unit.stats.attack) * 7
+        this.defender.baseMinDamage +=
+          (this.defender.attack -
+            this.$store.state.calculator.defender.unit.stats.attack) *
+          4
+        this.defender.baseMaxDamage +=
+          (this.defender.attack -
+            this.$store.state.calculator.defender.unit.stats.attack) *
+          7
       }
     },
     unitsFeatures () {
@@ -1043,8 +1407,8 @@ export default {
 
 .calculator {
   min-height: 80vh;
-  box-shadow: 0 0 5px #AAA;
-  .attacker{
+  box-shadow: 0 0 5px #aaa;
+  .attacker {
     min-height: 80vh;
   }
   .defender {
@@ -1086,6 +1450,12 @@ img.selected-defender-unit {
     "attacker": "Атакующий",
     "defender": "Защищающийся",
     "pick": "Выбрать"
+  },
+  "ch": {
+    "document-title": "伤害计算器",
+    "attacker": "攻击方",
+    "defender": "防御方",
+    "pick": "选择"
   }
 }
 </i18n>
