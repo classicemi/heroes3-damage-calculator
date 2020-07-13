@@ -2,46 +2,55 @@
   {
     "id": 0,
     "name_en": "Dirt",
-    "name_ru": "Грязь"
+    "name_ru": "Грязь",
+    "name_ch": "泥地"
   },
   {
     "id": 1,
     "name_en": "Sand",
-    "name_ru": "Песок"
+    "name_ru": "Песок",
+    "name_ch": "沙漠"
   },
   {
     "id": 2,
     "name_en": "Grass",
-    "name_ru": "Трава"
+    "name_ru": "Трава",
+    "name_ch": "草地"
   },
   {
     "id": 3,
     "name_en": "Snow",
-    "name_ru": "Снег"
+    "name_ru": "Снег",
+    "name_ch": "雪地"
   },
   {
     "id": 4,
     "name_en": "Swamp",
-    "name_ru": "Болото"
+    "name_ru": "Болото",
+    "name_ch": "沼泽"
   },
   {
     "id": 5,
     "name_en": "Rough",
-    "name_ru": "Камни" 
+    "name_ru": "Камни",
+    "name_ch": "戈壁"
   },
   {
     "id": 6,
     "name_en": "Subterranean",
-    "name_ru": "Подземелье" 
+    "name_ru": "Подземелье",
+    "name_ch": "地下"
   },
   {
     "id": 7,
     "name_en": "Lava",
-    "name_ru": "Лава" 
+    "name_ru": "Лава",
+    "name_ch": "熔岩"
   },
   {
     "id": 8,
     "name_en": "Highlands",
-    "name_ru": "Высокогорье"
+    "name_ru": "Высокогорье",
+    "name_ch": "丘陵"
   }
 ]
